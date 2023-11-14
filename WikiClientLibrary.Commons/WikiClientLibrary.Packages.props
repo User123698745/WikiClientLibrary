@@ -31,4 +31,12 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <NoWarn>CS0419;CS0618;CS0649;CS1573;CS1591;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;CS8619;CS8620;CS8621;CS8714;NU1903</NoWarn>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
 </Project>
