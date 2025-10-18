@@ -60,7 +60,7 @@ partial class Entity
                         Debug.Assert(entry.Value != null);
                         var value = (WbMonolingualText)entry.Value;
                         var item = entry.State == EntityEditEntryState.Removed
-                            ? new Contracts.MonolingualText { Language = value.Language, Remove = true }
+                            ? new Contracts.MonolingualText { Language = value.Language, Value = value.Text, Remove = true }
                             : new Contracts.MonolingualText { Language = value.Language, Value = value.Text };
                         if (!contract.Aliases.TryGetValue(item.Language, out var items))
                         {
