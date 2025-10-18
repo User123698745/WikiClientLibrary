@@ -15,6 +15,8 @@ public class CargoTests : WikiSiteTestsBase, IClassFixture<WikiSiteProvider>
     /// <inheritdoc />
     public CargoTests(ITestOutputHelper output, WikiSiteProvider wikiSiteProvider) : base(output, wikiSiteProvider)
     {
+        // For Cargo queries.
+        SiteNeedsLogin(Endpoints.LolEsportsWiki);
     }
 
     [Fact]
@@ -31,7 +33,11 @@ public class CargoTests : WikiSiteTestsBase, IClassFixture<WikiSiteProvider>
         ShallowTrace(result.Select(r => r.ToJsonString()));
         Assert.Equal(10, result.Count);
         Assert.All(result, r => Assert.Equal((string?)r["Page"], (string?)r["Name"]));
-        Assert.All(result, r => Assert.True(r["RP"] == null || Convert.ToInt32((string?)r["RP"]) > 0));
+        Assert.All(result, r => Assert.True((string?)r["RP"] switch
+        {
+            null or "" => true,
+            var s => Convert.ToInt32(s) > 0,
+        }));
     }
 
     [Fact]

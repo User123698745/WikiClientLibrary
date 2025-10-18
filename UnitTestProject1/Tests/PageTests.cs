@@ -151,15 +151,15 @@ public class PageTests : WikiSiteTestsBase, IClassFixture<WikiSiteProvider>
 
         var catParis = cats.FirstOrDefault(c => c.Title == "Category:Paris");
         var catCapitalsInEurope = cats.FirstOrDefault(c => c.Title == "Category:Capitals in Europe");
-        var catGoodArticles = cats.FirstOrDefault(c => c.Title == "Category:Good articles");
+        var catCoordinatesInWikidata = cats.FirstOrDefault(c => c.Title == "Category:Coordinates on Wikidata");
 
         Assert.NotNull(catParis);
         Assert.NotNull(catCapitalsInEurope);
-        Assert.NotNull(catGoodArticles);
+        Assert.NotNull(catCoordinatesInWikidata);
 
         Assert.False(catParis.IsHidden);
         Assert.False(catCapitalsInEurope.IsHidden);
-        Assert.True(catGoodArticles.IsHidden);
+        Assert.True(catCoordinatesInWikidata.IsHidden);
     }
 
     [Fact]
