@@ -239,12 +239,4 @@ internal static class Utility
         }
     }
 
-#if !BCL_FEATURE_KVP_TO_DICTIONARY
-    public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> source)
-        where TKey : notnull
-    {
-        return source.ToDictionary(p => p.Key, p => p.Value);
-    }
-#endif
-
 }

@@ -252,7 +252,7 @@ public class SerializableEntity : IEntity
     /// If there is <c>null</c> in the JSON array, <c>null</c> will be enumerated in the sequence.
     /// </returns>
     public static IEnumerable<SerializableEntity?> LoadAll(Stream s)
-        => LoadAllAsync(s).ToEnumerable();
+        => LoadAllAsync(s).ToBlockingEnumerable();
 
     /// <inheritdoc cref="Load(Stream)"/>
     /// <summary>

@@ -18,6 +18,8 @@ public class WikiClient : IWikiClient, IWikiClientLoggable, IDisposable
     private const string targetFramework = ".NET 6.0";
 #elif NET8_0
     private const string targetFramework = ".NET 8.0";
+#elif NET10_0
+    private const string targetFramework = ".NET 10.0";
 #endif
 
     /// <summary>

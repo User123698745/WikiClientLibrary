@@ -9,8 +9,4 @@
     <!-- Normalize value -->
     <WCL_IS_CI_BUILD>True</WCL_IS_CI_BUILD>
   </PropertyGroup>
-
-  <PropertyGroup Condition=" $([System.Text.RegularExpressions.Regex]::IsMatch($(TargetFramework), `^net[8-9]\.\d+$`)) ">
-    <DefineConstants>$(DefineConstants);BCL_FEATURE_REQUIRED_MEMBER;BCL_FEATURE_KVP_TO_DICTIONARY</DefineConstants>
-  </PropertyGroup>
 </Project>

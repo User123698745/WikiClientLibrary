@@ -13,11 +13,7 @@
     <ImplicitUsings>Enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="..\WikiClientLibrary\Infrastructures\Polyfill.cs" Link="Infrastructures\Polyfill.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+  <ItemGroup Condition="$(TargetFramework) == 'net8.0'">
     <PackageReference Include="System.Text.Json" Version="9.0.1" />
   </ItemGroup>
 

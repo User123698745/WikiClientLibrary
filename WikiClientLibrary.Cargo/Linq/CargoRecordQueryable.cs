@@ -116,10 +116,10 @@ internal class CargoRecordQueryable<T> : CargoRecordQueryable, IQueryable<T>, IO
     }
 
     /// <inheritdoc />
-    public IEnumerator<T> GetEnumerator() => BuildAsyncEnumerable().ToEnumerable().GetEnumerator();
+    public IEnumerator<T> GetEnumerator() => BuildAsyncEnumerable().ToBlockingEnumerable().GetEnumerator();
 
     /// <inheritdoc />
-    IEnumerator IEnumerable.GetEnumerator() => BuildAsyncEnumerable().ToEnumerable().GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => BuildAsyncEnumerable().ToBlockingEnumerable().GetEnumerator();
 
     /// <inheritdoc />
     IQueryProvider IQueryable.Provider => Provider;
