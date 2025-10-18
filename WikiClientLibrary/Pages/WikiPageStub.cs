@@ -62,11 +62,6 @@ public readonly struct WikiPageStub : IEquatable<WikiPageStub>
     {
     }
 
-    [Obsolete("Use long as id type instead of int.")]
-    public WikiPageStub(int id, string? title, int namespaceId) : this((long)id, title, namespaceId)
-    {
-    }
-
     /// <summary>
     /// Initializes a new instance of <see cref="WikiPageStub"/>.
     /// </summary>

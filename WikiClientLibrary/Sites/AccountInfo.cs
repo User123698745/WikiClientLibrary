@@ -199,7 +199,6 @@ public static class UserGroups
     public const string User = "user";
     public const string Bot = "bot";
     public const string SysOp = "sysop";
-    [Obsolete("Use UserGroups.AutoConfirmed instead")] public const string Autoconfirmed = "autoconfirmed";
     public const string AutoConfirmed = "autoconfirmed";
 
 }

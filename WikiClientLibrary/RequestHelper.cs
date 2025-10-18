@@ -324,10 +324,10 @@ internal static class RequestHelper
                 {
                     var jrevs = p.Value["revisions"]?.AsArray();
                     if (jrevs == null || jrevs.Count == 0) continue;
-                    var id = Convert.ToInt32(p.Key);
+                    var id = Convert.ToInt64(p.Key);
                     if (!stubDict.TryGetValue(id, out var stub))
                     {
-                        stub = new WikiPageStub(id, (string)p.Value["title"], (int)p.Value["ns"]);
+                        stub = new WikiPageStub(id, (string?)p.Value["title"], (int)p.Value["ns"]);
                         stubDict.Add(id, stub);
                     }
                     foreach (var jrev in jrevs)
