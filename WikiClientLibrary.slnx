@@ -1,0 +1,70 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="CIRelease" />
+    <BuildType Name="Debug" />
+    <BuildType Name="Publish" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/ConsoleTestApplication1/ConsoleTestApplication1.csproj">
+      <BuildType Solution="CIRelease|*" Project="Release" />
+      <BuildType Solution="Publish|*" Project="Debug" />
+    </Project>
+    <Project Path="Samples/LinqToCargo/LinqToCargo.csproj">
+      <BuildType Solution="CIRelease|*" Project="Release" />
+      <BuildType Solution="Publish|*" Project="Debug" />
+    </Project>
+    <Project Path="Samples/ScribuntoInteractive/ScribuntoInteractive.csproj">
+      <BuildType Solution="CIRelease|*" Project="Release" />
+      <BuildType Solution="Publish|*" Project="Debug" />
+    </Project>
+    <Project Path="Samples/WpfTestApplication1/WpfTestApplication1.csproj">
+      <BuildType Solution="CIRelease|*" Project="Release" />
+      <BuildType Solution="Publish|*" Project="Debug" />
+      <Build Solution="CIRelease|*" Project="false" />
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="LICENSE.md" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+    <File Path="WikiClientLibrary.Commons/WikiClientLibrary.Commons.props" />
+    <File Path="WikiClientLibrary.Commons/WikiClientLibrary.Packages.props" />
+  </Folder>
+  <Project Path="DocumentationProject/DocumentationProject.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" Id="9ee6a01d-862f-48f1-a090-81aa67d9e9fc">
+    <BuildDependency Project="WikiClientLibrary.Flow/WikiClientLibrary.Flow.csproj" />
+    <BuildDependency Project="WikiClientLibrary.Wikia/WikiClientLibrary.Wikia.csproj" />
+    <BuildDependency Project="WikiClientLibrary.Wikibase/WikiClientLibrary.Wikibase.csproj" />
+    <BuildDependency Project="WikiClientLibrary/WikiClientLibrary.csproj" />
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+    <Build Solution="CIRelease|*" Project="false" />
+    <Build Solution="Debug|*" Project="false" />
+    <Build Solution="Release|*" Project="false" />
+  </Project>
+  <Project Path="UnitTestProject1/UnitTestProject1.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+  </Project>
+  <Project Path="WikiClientLibrary.Cargo/WikiClientLibrary.Cargo.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Debug" />
+  </Project>
+  <Project Path="WikiClientLibrary.Flow/WikiClientLibrary.Flow.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+  </Project>
+  <Project Path="WikiClientLibrary.Wikia/WikiClientLibrary.Wikia.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+  </Project>
+  <Project Path="WikiClientLibrary.Wikibase/WikiClientLibrary.Wikibase.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+  </Project>
+  <Project Path="WikiClientLibrary/WikiClientLibrary.csproj">
+    <BuildType Solution="CIRelease|*" Project="Release" />
+    <BuildType Solution="Publish|*" Project="Release" />
+  </Project>
+</Solution>

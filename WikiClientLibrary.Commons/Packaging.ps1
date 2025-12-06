@@ -25,8 +25,8 @@ $PublishRoot = New-Item $PublishRoot -ItemType Directory -Force
 Write-Host "Package version: $Version"
 Write-Host "Publish output path: $PublishRoot"
 
-msbuild WikiClientLibrary.sln -p:Configuration=Release -p:Platform="Any CPU" -v:m
-msbuild WikiClientLibrary.sln -p:Configuration=Publish -p:Platform="Any CPU" -v:m
+msbuild WikiClientLibrary.slnx -p:Configuration=Release -p:Platform="Any CPU" -v:m
+msbuild WikiClientLibrary.slnx -p:Configuration=Publish -p:Platform="Any CPU" -v:m
 
 if ($LASTEXITCODE) {
     Exit $LASTEXITCODE

@@ -16,7 +16,7 @@ else {
     Write-Warning "BUILD_SECRET_KEY is not available. Will build without secret."
 }
 
-dotnet build WikiClientLibrary.sln -c $Configuration
+dotnet build WikiClientLibrary.slnx -c $Configuration
 
 $BuildResult = $LASTEXITCODE
 if ($env:BUILD_SECRET_KEY) {
