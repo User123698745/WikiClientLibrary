@@ -81,8 +81,8 @@ public class OperationFailedException : WikiClientException
 public class BadValueException : OperationFailedException
 {
 
-    public BadValueException(string errorCode, string message)
-        : base(errorCode, message)
+    public BadValueException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
     {
     }
 
@@ -95,8 +95,8 @@ public class BadValueException : OperationFailedException
 public class InvalidActionException : BadValueException
 {
 
-    public InvalidActionException(string errorCode, string message)
-        : base(errorCode, message)
+    public InvalidActionException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
     {
     }
 
@@ -113,8 +113,8 @@ public class InvalidActionException : BadValueException
 public class AccountAssertionFailureException : OperationFailedException
 {
 
-    public AccountAssertionFailureException(string errorCode, string message)
-        : base(errorCode, message)
+    public AccountAssertionFailureException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
     {
     }
 
@@ -195,8 +195,8 @@ public class UnauthorizedOperationException : OperationFailedException
 public class OperationConflictException : OperationFailedException
 {
 
-    public OperationConflictException(string errorCode, string message)
-        : base(errorCode, message)
+    public OperationConflictException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
     {
     }
 
@@ -209,8 +209,8 @@ public class OperationConflictException : OperationFailedException
 public class BadTokenException : OperationFailedException
 {
 
-    public BadTokenException(string errorCode, string message)
-        : base(errorCode, message)
+    public BadTokenException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
     {
     }
 
@@ -265,15 +265,15 @@ public class MediaWikiRemoteException : OperationFailedException
 }
 
 /// <summary>
-/// Raises when MediaWiki server replication lag
-/// does not meet the required limitation.
-/// (<a href="https://www.mediawiki.org/wiki/Manual:Maxlag_parameter">mw:Manual:Maxlag parameter</a>)
+/// Raised when MediaWiki server replication lag
+/// does not meet the required limitation. (<c>maxlag</c>)
+/// See <a href="https://www.mediawiki.org/wiki/Manual:Maxlag_parameter">mw:Manual:Maxlag parameter</a>.
 /// </summary>
 public class ServerLagException : OperationFailedException
 {
 
-    public ServerLagException(string errorCode, string message, double lag, string lagType, string laggedHost)
-        : base(errorCode, message)
+    public ServerLagException(string errorCode, string? errorMessage, double lag, string lagType, string laggedHost)
+        : base(errorCode, errorMessage)
     {
         Lag = lag;
         LaggedHost = laggedHost;
@@ -301,12 +301,26 @@ public class ServerLagException : OperationFailedException
 }
 
 /// <summary>
+/// Raised by MediaWiki server when the API operation is too frequent. (<c>ratelimited</c>).
+/// </summary>
+public class RateLimitedException : OperationFailedException
+{
+
+    public RateLimitedException(string errorCode, string? errorMessage)
+        : base(errorCode, errorMessage)
+    {
+    }
+
+
+}
+
+/// <summary>
 /// Raises when the MediaWiki server is in read-only mode.
 /// </summary>
 public class MediaWikiReadOnlyException : OperationFailedException
 {
 
-    internal static string? BuildExceptionMessage(string errorCode, string errorMessage, string? readOnlyReason)
+    internal static string? BuildExceptionMessage(string errorCode, string? errorMessage, string? readOnlyReason)
     {
         errorMessage ??= "";
         if (!string.IsNullOrEmpty(readOnlyReason) && !errorMessage.Contains(readOnlyReason, StringComparison.Ordinal))
@@ -314,7 +328,7 @@ public class MediaWikiReadOnlyException : OperationFailedException
         return BuildExceptionMessage(errorCode, errorMessage);
     }
 
-    public MediaWikiReadOnlyException(string errorCode, string errorMessage, string? readOnlyReason)
+    public MediaWikiReadOnlyException(string errorCode, string? errorMessage, string? readOnlyReason)
         : base(errorCode, errorMessage, BuildExceptionMessage(errorCode, errorMessage, readOnlyReason))
     {
         ReadOnlyReason = readOnlyReason;

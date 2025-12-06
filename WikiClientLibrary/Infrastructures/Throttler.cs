@@ -45,8 +45,8 @@ public class Throttler : IWikiClientLoggable
                     if (ct.CanBeCanceled)
                     {
                         // With cancellation support.
-                        var tcs = new TaskCompletionSource<bool>();
-                        using (ct.Register(o => ((TaskCompletionSource<bool>)o!).SetCanceled(), tcs))
+                        var tcs = new TaskCompletionSource();
+                        using (ct.Register(o => ((TaskCompletionSource)o!).SetCanceled(), tcs))
                         {
                             await Task.WhenAny(previousWork.Completion, tcs.Task);
                         }
@@ -122,7 +122,7 @@ public class Throttler : IWikiClientLoggable
     private class WorkItem : IDisposable
     {
 
-        private readonly TaskCompletionSource<bool> completionTcs = new TaskCompletionSource<bool>();
+        private readonly TaskCompletionSource completionTcs = new();
 
         public WorkItem(string name)
         {
@@ -138,7 +138,7 @@ public class Throttler : IWikiClientLoggable
         /// </summary>
         public void Dispose()
         {
-            completionTcs.TrySetResult(true);
+            completionTcs.TrySetResult();
         }
 
         public override string ToString()

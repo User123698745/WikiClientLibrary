@@ -158,6 +158,9 @@ public class MediaWikiJsonResponseParser : WikiResponseMessageParser<JsonNode>
                 context.NeedRetry = true;
                 throw new ServerLagException(errorCode, fullMessage, (double?)errorNode["lag"] ?? 0, (string)errorNode["type"],
                     (string)errorNode["host"]);
+            case "ratelimited":
+                context.NeedRetry = true;
+                throw new RateLimitedException(errorCode, fullMessage);
             case "permissiondenied":
             case "readapidenied": // You need read permission to use this module.
             case "mustbeloggedin": // You must be logged in to upload this file.
